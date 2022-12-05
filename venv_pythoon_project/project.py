@@ -16,3 +16,9 @@
 # 실행
 # uvicorn app.main:app --reload
 # 유비콘으로 app 폴더 밑에 main 파일의 app 객체를 실행. 코드가 수정됐을 경우 재시작.
+
+# jinja2 설치
+# pip install jinja2
+
+# aiofiles 설치
+# pip install aiofiles

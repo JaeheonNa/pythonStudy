@@ -17,11 +17,9 @@ app = FastAPI()
 templates = Jinja2Templates(directory=BASE_DIR / "templates")
 
 
-@app.get("/", response_class=HTMLResponse)
-async def root(request: Request):
-    return templates.TemplateResponse("./index.html", {"request": request, "title": "콜렉터 북북이"})
-
-
-@app.get("/search", response_class=HTMLResponse)
-async def search(request: Request, q: str):
-    return templates.TemplateResponse("./index.html", {"request": request, "title": "콜렉터 북북이", "keyword": q})
+# response_class=HTMLResponse --> 응답할 때 응답 값의 타입을 HTMLResponse로 하겠다는 의미.
+# {id} --> 다이나믹 URL. {id} 값이 라우터(함수)의 인자로 넘어감. FastAPI는 Type을 힌트로 보고 매핑해줌.
+# requeset:Request --> 요청 관련 정보. 라우터(함수)의 인자와 templateResponsec 인자에 반드시 있어야함.
+@app.get("/items/{id}", response_class=HTMLResponse)
+async def read_item(request: Request, id: str):
+    return templates.TemplateResponse("./items.html", {"request": request, "id": id, "data": "Hola Fast API"})
