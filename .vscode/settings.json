@@ -4,3 +4,4 @@
     "python.linting.pylintArgs": ["--ignore=E501"],
     "python.linting.flake8Enabled": false
 }
+
